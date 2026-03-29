@@ -1,0 +1,86 @@
+.landing {
+min-height: 100vh;
+text-align: center;
+padding: 40px;
+background: #ffffff;
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* LOGO */
+.logo {
+width: 120px;
+margin-bottom: 10px;
+}
+
+/* TITLE */
+h1 {
+font-size: 34px;
+margin: 10px 0;
+color: #7B3F00; /* SSU brown */
+}
+
+/* Underline for premium look */
+h1::after {
+content: "";
+display: block;
+width: 80px;
+height: 3px;
+background: #7B3F00;
+margin: 10px auto;
+border-radius: 2px;
+}
+
+/* SUBTITLE */
+.subtitle {
+font-size: 16px;
+margin-bottom: 40px;
+color: #7B3F00;
+opacity: 0.9;
+}
+
+/* PROJECT GRID */
+.projects {
+display: flex;
+justify-content: center;
+gap: 30px;
+flex-wrap: wrap;
+}
+
+/* PROJECT CARD */
+.projectCard {
+width: 200px;
+padding: 25px;
+border-radius: 16px;
+background: #f8f5f2;
+border: 1px solid #eee;
+cursor: pointer;
+transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.projectCard:hover {
+transform: translateY(-6px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* ICON IMAGE */
+.projectCard img {
+width: 90px;
+height: 90px;
+object-fit: contain;
+margin-bottom: 12px;
+}
+
+/* TEXT */
+.projectCard p {
+font-size: 15px;
+font-weight: 500;
+color: #333;
+}
+
+/* DISABLED CARD */
+.disabled {
+opacity: 0.5;
+cursor: not-allowed;
+pointer-events: none;
+}

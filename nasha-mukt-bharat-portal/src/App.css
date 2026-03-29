@@ -1,0 +1,716 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+box-sizing:border-box;
+}
+
+body{
+
+margin:0;
+
+font-family:"Poppins",sans-serif;
+
+background:#eef2f7;
+
+-webkit-font-smoothing:antialiased;
+
+}
+
+
+
+/* =========================
+   HAPPY PREMIUM BACKGROUND
+========================= */
+
+.bg{
+
+min-height:100vh;
+
+background:
+
+linear-gradient(
+120deg,
+rgba(33,150,243,0.85),
+rgba(156,39,176,0.85),
+rgba(255,152,0,0.80)
+),
+
+url("https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1974");
+
+background-size:cover;
+
+background-position:center;
+
+padding:40px;
+
+animation:fadeZoom 1s ease;
+
+}
+
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px 25px;
+
+background:rgba(255,255,255,0.18);
+
+backdrop-filter:blur(20px);
+
+border-radius:18px;
+
+margin-bottom:30px;
+
+box-shadow:
+
+0 10px 40px rgba(0,0,0,0.3),
+
+inset 0 1px 0 rgba(255,255,255,0.4);
+
+}
+
+
+
+.headerLeft{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+
+
+.logoCircle{
+
+width:55px;
+height:55px;
+
+border-radius:50%;
+
+background:white;
+
+color:#6a1b9a;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-weight:bold;
+
+font-size:20px;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+
+animation:float 3s infinite ease-in-out;
+
+}
+
+
+
+.title{
+
+margin:0;
+
+color:white;
+
+font-size:26px;
+
+font-weight:600;
+
+letter-spacing:0.5px;
+
+}
+
+
+
+.subtitle{
+
+color:white;
+
+opacity:0.9;
+
+font-size:15px;
+
+}
+
+
+
+.langBox{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+background:white;
+
+padding:10px 14px;
+
+border-radius:12px;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+
+}
+
+
+
+.langSelect{
+
+border:none;
+
+outline:none;
+
+font-size:15px;
+
+background:transparent;
+
+cursor:pointer;
+
+color:#6a1b9a;
+
+font-weight:600;
+
+}
+
+
+
+/* =========================
+   CARD
+========================= */
+
+.glass{
+
+background:rgba(255,255,255,0.18);
+
+backdrop-filter:blur(25px);
+
+border-radius:20px;
+
+padding:30px;
+
+color:white;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,0.35),
+
+inset 0 1px 0 rgba(255,255,255,0.4);
+
+margin-bottom:30px;
+
+animation:slideUp 0.7s ease;
+
+transition:0.3s;
+
+}
+
+
+
+.glass:hover{
+
+transform:translateY(-5px) scale(1.01);
+
+}
+
+
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section{
+
+margin-top:30px;
+
+margin-bottom:15px;
+
+font-weight:600;
+
+font-size:18px;
+
+}
+
+
+
+/* =========================
+   FIELD
+========================= */
+
+.field{
+
+position:relative;
+
+margin-top:28px;
+
+}
+
+
+
+.field input,
+.field textarea,
+.field select{
+
+width:100%;
+
+padding:14px;
+
+border-radius:12px;
+
+border:1px solid rgba(255,255,255,0.4);
+
+background:rgba(255,255,255,0.20);
+
+color:white;
+
+font-size:16px;
+
+outline:none;
+
+transition:0.3s;
+
+}
+
+
+
+/* glow effect */
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+
+background:rgba(255,255,255,0.30);
+
+box-shadow:0 0 10px rgba(255,255,255,0.5);
+
+}
+
+
+
+/* dropdown options */
+
+.field select option{
+
+color:black;
+
+background:white;
+
+}
+
+
+
+/* =========================
+   FLOAT LABEL
+========================= */
+
+.field label{
+
+position:absolute;
+
+left:14px;
+
+top:15px;
+
+font-size:14px;
+
+opacity:0.9;
+
+transition:0.3s;
+
+pointer-events:none;
+
+}
+
+
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label,
+.field select:focus + label,
+.field select:valid + label{
+
+top:-10px;
+
+font-size:12px;
+
+}
+
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.submit{
+
+margin-top:30px;
+
+width:100%;
+
+padding:18px;
+
+background:linear-gradient(
+45deg,
+#ffffff,
+#e3f2fd
+);
+
+color:#4a148c;
+
+border:none;
+
+border-radius:14px;
+
+font-size:19px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:0.3s;
+
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
+}
+
+
+
+.submit:hover{
+
+transform:translateY(-4px) scale(1.04);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.5);
+
+}
+
+
+
+/* =========================
+   LINK
+========================= */
+
+.link{
+
+background:none;
+
+border:none;
+
+color:white;
+
+margin-top:15px;
+
+cursor:pointer;
+
+text-decoration:underline;
+
+font-weight:500;
+
+}
+
+
+
+/* =========================
+   UPLOAD
+========================= */
+
+.upload{
+
+display:block;
+
+margin-top:20px;
+
+padding:20px;
+
+border:2px dashed rgba(255,255,255,0.7);
+
+border-radius:14px;
+
+cursor:pointer;
+
+text-align:center;
+
+transition:0.3s;
+
+background:rgba(255,255,255,0.15);
+
+}
+
+
+
+.upload:hover{
+
+background:rgba(255,255,255,0.25);
+
+transform:scale(1.02);
+
+}
+
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+.previewBox{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:15px;
+
+margin-top:18px;
+
+}
+
+
+
+.previewItem{
+
+background:white;
+
+color:black;
+
+border-radius:12px;
+
+width:130px;
+
+padding:8px;
+
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+
+}
+
+
+
+.previewItem img{
+
+width:100%;
+
+height:90px;
+
+object-fit:cover;
+
+border-radius:8px;
+
+}
+
+
+
+.videoItem{
+
+background:white;
+
+color:#6a1b9a;
+
+padding:10px;
+
+border-radius:10px;
+
+}
+
+
+
+/* =========================
+   LOADER
+========================= */
+
+.loader{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.7);
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+z-index:9999;
+
+}
+
+
+
+.spinner{
+
+border:7px solid white;
+
+border-top:7px solid transparent;
+
+border-radius:50%;
+
+width:60px;
+
+height:60px;
+
+animation:spin 1s linear infinite;
+
+}
+
+
+
+/* =========================
+   SUCCESS
+========================= */
+
+.successPopup{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,0.7);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+}
+
+
+
+.successBox{
+
+background:white;
+
+color:#4a148c;
+
+padding:45px;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+
+animation:popup 0.5s;
+
+}
+
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes spin{
+
+100%{transform:rotate(360deg);}
+
+}
+
+@keyframes fadeZoom{
+
+from{
+opacity:0;
+transform:scale(1.05);
+}
+
+}
+
+@keyframes slideUp{
+
+from{
+transform:translateY(60px);
+opacity:0;
+}
+
+}
+
+@keyframes popup{
+
+from{
+transform:scale(0.6);
+opacity:0;
+}
+
+}
+
+@keyframes float{
+
+50%{
+transform:translateY(-8px);
+}
+
+}
+
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+.bg{
+padding:20px;
+}
+
+.glass{
+padding:20px;
+}
+
+.header{
+
+flex-direction:column;
+
+gap:15px;
+
+align-items:flex-start;
+
+}
+
+}
+
+/* FIX FLOAT LABEL FOR SELECT */
+
+.field select.hasValue + label,
+.field select:focus + label {
+
+top:-10px;
+font-size:12px;
+
+}
+.label {
+  color: white;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
