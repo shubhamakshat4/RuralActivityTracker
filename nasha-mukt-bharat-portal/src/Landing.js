@@ -1,47 +1,43 @@
-
 import "./Landing.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Landing() {
 
-  const navigate = useNavigate();   // ✅ ADD THIS
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) {
+    navigate("/");
+    return null;
+  }
 
   return (
     <div className="landing">
 
-      {/* LOGO */}
-      <img
-        src="/ssu-logo.png"
-        alt="SSU Logo"
-        className="logo"
-      />
+      <img src="/ssu-logo.png" className="logo" />
 
-      {/* TITLE */}
       <h1>Rural Activity Tracker</h1>
-      <p className="subtitle">
-        powered by Sri Sri University
-      </p>
+      <p className="subtitle">powered by Sri Sri University</p>
 
-      {/* PROJECT SECTION */}
+      <h3>Welcome {user.name} ji</h3>
+
       <div className="projects">
 
-        {/* Nasha Mukt */}
-        <div
-          className="projectCard"
-          onClick={() => navigate("/app")}   // ✅ FIXED
-        >
-          <img src="/nasha.png" alt="Nasha Mukt" />
-          <p>Nasha Mukt Bharat Abhiyan</p>
-        </div>
+        {/* Nasha */}
+        {user.allowedForms.includes("nashamuktbharat") && (
+          <div className="projectCard" onClick={() => navigate("/app")}>
+            <img src="/nasha.png" />
+            <p>Nasha Mukt Bharat Abhiyan</p>
+          </div>
+        )}
 
-        {/* Future Placeholder */}
-        <div className="projectCard disabled">
-          <img src="/coming-soon.png" alt="Coming Soon" />
-          <p>Coming Soon</p>
+        {/* My submissions */}
+        <div className="projectCard" onClick={() => navigate("/my-submissions")}>
+          <img src="/history.jpg" />
+          <p>My Submissions</p>
         </div>
 
       </div>
-
     </div>
   );
 }

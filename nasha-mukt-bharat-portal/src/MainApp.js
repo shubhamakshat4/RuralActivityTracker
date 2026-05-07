@@ -6,6 +6,7 @@ import { LanguageContext } from "./context/LanguageContext";
 import LanguageSelector from "./components/LanguageSelector";
 import Header from "./components/Header";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -22,7 +23,14 @@ const [success,setSuccess]=useState(false);
 const { t } = useContext(LanguageContext);
 
 
+const navigate = useNavigate();
+const user = JSON.parse(localStorage.getItem("user"));
 
+useEffect(() => {
+  if (!user) {
+    navigate("/");
+  }
+}, [user, navigate]);
 
 /* SELECTED LOCATION */
 
@@ -41,7 +49,12 @@ const [manualVillageName,setManualVillageName]=useState("");
 
 /* FORM */
 
-const [form,setForm]=useState({venue:"",date:""});
+const [form,setForm]=useState({
+  name: user?.name || "",
+  mobile: user?.mobile || "",
+  venue:"",
+  date:""
+});
 const [errors,setErrors]=useState({});
 
 
@@ -435,7 +448,8 @@ OK
 
 <input
 placeholder=" "
-onChange={e=>update("name",e.target.value)}
+value={form.name}
+readOnly
 />
 
 <label>{t.name} *</label>
@@ -449,7 +463,8 @@ onChange={e=>update("name",e.target.value)}
 
 <input
 placeholder=" "
-onChange={e=>update("mobile",e.target.value)}
+value={form.mobile}
+readOnly
 />
 
 <label>{t.mobile} *</label>

@@ -714,3 +714,43 @@ font-size:12px;
   margin-bottom: 6px;
   font-size: 14px;
 }
+
+input[readonly] {
+  background: #f7f7f7;
+  color: #555;
+  border: 1px solid #ddd;
+}
+.submissionsPage {
+  padding: 20px;
+}
+
+.submissionTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.submissionTable th,
+.submissionTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.submissionTable th {
+  background: #7B3F00;
+  color: white;
+}
+
+.submissionsPage {
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.submissionTable a {
+  color: #2f80ed;
+  text-decoration: none;
+}
+
+.submissionTable a:hover {
+  text-decoration: underline;
+}
