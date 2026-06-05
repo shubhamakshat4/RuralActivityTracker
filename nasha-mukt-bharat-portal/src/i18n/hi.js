@@ -36,13 +36,17 @@ nukkad:"नुक्कड़ नाटक",
 satsang:"सत्संग",
 competition:"प्रतियोगिता",
 counselling:"परामर्श",
+navChetnaShivir:"नव चेतना शिविर",
+balChetnaShivir:"बाल चेतना शिविर",
 others:"अन्य",
 
 state:"राज्य",
 
 fillAll:"कृपया सभी आवश्यक विवरण भरें",
 venue:"कार्यक्रम स्थल",
-date:"कार्यक्रम तिथि",
-selectDate:"तिथि चुनें"
+startDate:"कार्यक्रम प्रारंभ तिथि",
+endDate:"कार्यक्रम समाप्ति तिथि",
+hoursPerDay:"प्रतिदिन घंटे (कार्यक्रम की अवधि)",
 
+fillAll:"कृपया सभी आवश्यक विवरण भरें"
 };

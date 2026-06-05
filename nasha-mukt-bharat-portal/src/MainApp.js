@@ -52,8 +52,9 @@ const [manualVillageName,setManualVillageName]=useState("");
 const [form,setForm]=useState({
   name: user?.name || "",
   mobile: user?.mobile || "",
-  venue:"",
-  date:""
+  startDate:"",
+  endDate:"",
+  hoursPerDay:""
 });
 const [errors,setErrors]=useState({});
 
@@ -130,6 +131,29 @@ const update=(k,v)=>{
 setForm(prev=>({...prev,[k]:v}));
 
 };
+
+const calculateTotalHours = () => {
+
+  if(
+    !form.startDate ||
+    !form.endDate ||
+    !form.hoursPerDay
+  ) return 0;
+
+  const start = new Date(form.startDate);
+  const end = new Date(form.endDate);
+
+  const days =
+    Math.floor(
+      (end - start) /
+      (1000 * 60 * 60 * 24)
+    ) + 1;
+
+  return days * Number(form.hoursPerDay);
+
+};
+
+const totalHours = calculateTotalHours();
 
 
 
@@ -224,7 +248,17 @@ if(!form.description) e.description=true;
 if(!form.attendance) e.attendance=true;
 
 if(!districtCode) e.district=true;
-if(!form.date) e.date=true;
+if(!form.startDate) e.startDate=true;
+if(!form.endDate) e.endDate=true;
+if(!form.hoursPerDay) e.hoursPerDay=true;
+
+if(
+  form.startDate &&
+  form.endDate &&
+  new Date(form.endDate) < new Date(form.startDate)
+){
+  e.endDate = true;
+}
 
 if(!subdistrictCode) e.subdistrict=true;
 
@@ -336,14 +370,16 @@ videoUrls.push(url);
 setLoadingText("Saving Report");
 
 
-const url = new URL("https://script.google.com/macros/s/AKfycbyZT-7398x1_y6oslxgeeC4AHrFmsFXU4ca0iw_zAANLm0oMvQAiteYZXRaWr3p_VCq/exec");
+const url = new URL("https://script.google.com/macros/s/AKfycbxTBKPjakEh_RbWIYmPhwNdGrDqsgRhnXte8aN_C-wEZmCbRMxsSrrZxNgdm7Xh5bAY/exec");
 
 url.searchParams.append("name", form.name);
 url.searchParams.append("mobile", form.mobile);
 url.searchParams.append("attendance", form.attendance);
 url.searchParams.append("program", form.program);
-url.searchParams.append("programDate", form.date);
-url.searchParams.append("date", form.date);
+url.searchParams.append("programStartDate",form.startDate);
+url.searchParams.append("programEndDate",form.endDate);
+url.searchParams.append("hoursPerDay",form.hoursPerDay);
+url.searchParams.append("totalHours",totalHours);
 url.searchParams.append("stateName", "Odisha");
 url.searchParams.append("stateCode", "21");
 url.searchParams.append("districtName", districtName);
@@ -352,7 +388,6 @@ url.searchParams.append("subdistrictName", subdistrictName);
 url.searchParams.append("subdistrictCode", subdistrictCode);
 url.searchParams.append("villageName", manualVillageName ? manualVillageName : villageName);
 url.searchParams.append("villageCode", manualVillageName ? "" : villageCode);
-url.searchParams.append("venue", form.venue);
 url.searchParams.append("description", form.description);
 url.searchParams.append("photos", photoUrls.join(", "));
 url.searchParams.append("videos", videoUrls.join(", "));
@@ -501,6 +536,8 @@ className={form.program ? "hasValue" : ""}
 <option value="satsang">{t.satsang}</option>
 <option value="competition">{t.competition}</option>
 <option value="counselling">{t.counselling}</option>
+<option value="navChetnaShivir">{t.navChetnaShivir}</option>
+<option value="balChetnaShivir">{t.balChetnaShivir}</option>
 <option value="others">{t.others}</option>
 
 </select>
@@ -532,7 +569,18 @@ onChange={e=>update("attendance",e.target.value)}
 <label>{t.attendance} *</label>
 
 </div>
+<div className="field">
 
+<input
+type="date"
+placeholder=" "
+required
+onChange={e=>update("startDate",e.target.value)}
+/>
+
+<label>{t.startDate} *</label>
+
+</div>
 
 <div className="field">
 
@@ -540,10 +588,24 @@ onChange={e=>update("attendance",e.target.value)}
 type="date"
 placeholder=" "
 required
-onChange={e=>update("date",e.target.value)}
+onChange={e=>update("endDate",e.target.value)}
 />
 
-<label>{t.date} *</label>
+<label>{t.endDate} *</label>
+
+</div>
+
+<div className="field">
+
+<input
+type="number"
+min="1"
+placeholder=" "
+required
+onChange={e=>update("hoursPerDay",e.target.value)}
+/>
+
+<label>{t.hoursPerDay} *</label>
 
 </div>
 
@@ -738,18 +800,6 @@ onChange={e=>setManualVillageName(e.target.value)}
 </div>
 
 }
-<div className="field">
-
-<input
-placeholder=" "
-onChange={e=>update("venue",e.target.value)}
-/>
-
-<label>{t.venue}</label>
-
-</div>
-
-
 
 
 {/* PHOTO */}

@@ -36,9 +36,16 @@ nukkad:"Nukkad Natak",
 satsang:"Satsang",
 competition:"Competition",
 counselling:"Counselling",
+navChetnaShivir:"Nav Chetna Shivir",
+balChetnaShivir:"Bal Chetna Shivir",
 others:"Others",
 
 venue:"Venue Name",
-date:"Program Date",
+startDate:"Program Start Date",
+endDate:"Program End Date",
+hoursPerDay:"Number of hours per day",
 selectDate:"Select Date",
+
+fillAll:"Please fill all the required details"
 };
+
