@@ -55,6 +55,14 @@ export default function AdminPanel(){
           <p>View Users</p>
         </div>
 
+        <div
+  className="projectCard"
+  onClick={() => navigate("/manage-users")}
+>
+  <img src="/manage_users.png" />
+  <p>Manage Users</p>
+</div>
+
         {/* DASHBOARD */}
         <div
           className="projectCard"

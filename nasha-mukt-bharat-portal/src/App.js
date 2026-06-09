@@ -7,6 +7,7 @@ import AdminLogin from "./AdminLogin";
 import AdminPanel from "./AdminPanel";
 import AddUser from "./AddUser";
 import ModelVillageApp from "./ModelVillageApp";
+import ManageUsers from "./ManageUsers";
 
 export default function App() {
   return (
@@ -33,6 +34,12 @@ export default function App() {
   path="/add-user"
   element={<AddUser />}
 />
+
+<Route
+  path="/manage-users"
+  element={<ManageUsers />}
+/>
+
 <Route
  path="/model-village"
  element={<ModelVillageApp />}
