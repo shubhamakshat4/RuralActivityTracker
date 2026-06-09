@@ -6,6 +6,7 @@ import MySubmissions from "./MySubmissions";
 import AdminLogin from "./AdminLogin";
 import AdminPanel from "./AdminPanel";
 import AddUser from "./AddUser";
+import ModelVillageApp from "./ModelVillageApp";
 
 export default function App() {
   return (
@@ -31,6 +32,10 @@ export default function App() {
 <Route
   path="/add-user"
   element={<AddUser />}
+/>
+<Route
+ path="/model-village"
+ element={<ModelVillageApp />}
 />
       </Routes>
     </BrowserRouter>

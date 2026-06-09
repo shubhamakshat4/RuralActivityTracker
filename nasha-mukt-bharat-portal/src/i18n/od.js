@@ -6,6 +6,7 @@ selectProgram:"କାର୍ଯ୍ୟକ୍ରମ ବାଛନ୍ତୁ",
 
 userDetails: "ବ୍ୟବହାରକାରୀ ବିବରଣୀ",
 eventDetails: "କାର୍ଯ୍ୟକ୍ରମ ବିବରଣୀ",
+modelVillageProject:"ମଡେଲ ଭିଲେଜ ପ୍ରକଳ୍ପ",
 
 name: "ନାମ",
 mobile: "ମୋବାଇଲ ନମ୍ବର",
@@ -47,6 +48,13 @@ startDate:"କାର୍ଯ୍ୟକ୍ରମ ଆରମ୍ଭ ତାରିଖ",
 endDate:"କାର୍ଯ୍ୟକ୍ରମ ସମାପ୍ତ ତାରିଖ",
 hoursPerDay:"ପ୍ରତିଦିନ ଘଣ୍ଟା (କାର୍ଯ୍ୟକ୍ରମ କୀ ଅବଧି)",
 selectDate:"ତାରିଖ ଚୟନ କରନ୍ତୁ",
+
+utkarshYoga: "ଉତ୍କର୍ଷ ଯୋଗ",
+medhaYoga: "ମେଧା ଯୋଗ",
+happinessProgram: "ହ୍ୟାପିନେସ୍ ପ୍ରୋଗ୍ରାମ",
+wellnessProgram: "ୱେଲନେସ୍ ପ୍ରୋଗ୍ରାମ",
+yltp: "ୱାଇଏଲଟିପି",
+oneDayProgramOnDeAddiction: "ନିଶାମୁକ୍ତି ଉପରେ ଏକଦିନିଆ କାର୍ଯ୍ୟକ୍ରମ",
 
 fillAll:"ଦୟାକରି ସମସ୍ତ ଆବଶ୍ୟକ ତଥ୍ୟ ପୂରଣ କରନ୍ତୁ"
 

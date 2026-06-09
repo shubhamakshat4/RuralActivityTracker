@@ -754,3 +754,12 @@ input[readonly] {
 .submissionTable a:hover {
   text-decoration: underline;
 }
+.modelVillageTheme {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #c9a227 0%,
+    #e8c547 45%,
+    #fff8dc 100%
+  );
+}

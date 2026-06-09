@@ -31,6 +31,17 @@ export default function Landing() {
           </div>
         )}
 
+        {/* Model Village */}
+{user.allowedForms.includes("modelvillage") && (
+  <div
+    className="projectCard"
+    onClick={() => navigate("/model-village")}
+  >
+    <img src="/model_village.png" />
+    <p>Model Village Project</p>
+  </div>
+)}
+
         {/* My submissions */}
         <div className="projectCard" onClick={() => navigate("/my-submissions")}>
           <img src="/history.jpg" />

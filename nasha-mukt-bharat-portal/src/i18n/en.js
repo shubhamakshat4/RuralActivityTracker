@@ -1,3 +1,5 @@
+import { StrictMode } from "react";
+
 export default {
 
 title: "Nasha Mukt Bharat Abhiyan",
@@ -6,6 +8,7 @@ selectProgram:"Select Program",
 
 userDetails: "User Details",
 eventDetails: "Event Details",
+modelVillageProject:"Model Village Project",
 
 name: "Name",
 mobile: "Mobile",
@@ -45,6 +48,13 @@ startDate:"Program Start Date",
 endDate:"Program End Date",
 hoursPerDay:"Number of hours per day",
 selectDate:"Select Date",
+
+utkarshYoga: "Utkarsh Yoga",
+medhaYoga: "Medha Yoga",
+happinessProgram: "Happiness Program",
+wellnessProgram: "Wellness Program",
+yltp: "YLTP",
+oneDayProgramOnDeAddiction: "One Day Program on De-Addiction",
 
 fillAll:"Please fill all the required details"
 };

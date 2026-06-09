@@ -6,6 +6,7 @@ selectProgram:"कार्यक्रम चुनें",
 
 userDetails: "उपयोगकर्ता विवरण",
 eventDetails: "कार्यक्रम विवरण",
+modelVillageProject:"मॉडल विलेज प्रोजेक्ट",
 
 name: "नाम",
 mobile: "मोबाइल नंबर",
@@ -47,6 +48,13 @@ venue:"कार्यक्रम स्थल",
 startDate:"कार्यक्रम प्रारंभ तिथि",
 endDate:"कार्यक्रम समाप्ति तिथि",
 hoursPerDay:"प्रतिदिन घंटे (कार्यक्रम की अवधि)",
+
+utkarshYoga: "उत्कर्ष योग",
+medhaYoga: "मेधा योग",
+happinessProgram: "हैप्पीनेस प्रोग्राम",
+wellnessProgram: "वेलनेस प्रोग्राम",
+yltp: "वाईएलटीपी",
+oneDayProgramOnDeAddiction: "नशा मुक्ति पर एक दिवसीय कार्यक्रम",
 
 fillAll:"कृपया सभी आवश्यक विवरण भरें"
 };
