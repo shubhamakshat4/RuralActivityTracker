@@ -6,64 +6,108 @@ export default function MySubmissions() {
 
   const user = JSON.parse(localStorage.getItem("user"));
 
-  useEffect(() => {
+  const fetchSheetData = async (sheetId) => {
 
-    const SHEET_ID =
-      "1DMljlhLSzr656-vQeUgBlRMeZLc3HejpHq0gWy7Mts8";
+  const res = await fetch(
+    `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=Sheet1`
+  );
 
-    fetch(
-      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=Sheet1`
-    )
-      .then(res => res.text())
-      .then(text => {
+  const text = await res.text();
 
-        const json = JSON.parse(
-          text.substring(47).slice(0, -2)
-        );
+  const json = JSON.parse(
+    text.substring(47).slice(0, -2)
+  );
 
-        const rows = json.table.rows;
+  return json.table.rows;
+};
 
-        const data = rows.map(r => ({
+ useEffect(() => {
 
-  name: r.c[0]?.v || "",
-  mobile: r.c[1]?.v?.toString() || "",
-  attendance: r.c[2]?.v || "",
-  program: r.c[3]?.v || "",
-  programDate: r.c[4]?.v || "",
-  date: r.c[5]?.v || "",
+  const loadData = async () => {
 
-  stateName: r.c[6]?.v || "",
-  stateCode: r.c[7]?.v || "",
+    try {
 
-  districtName: r.c[8]?.v || "",
-  districtCode: r.c[9]?.v || "",
+      const nashaSheet =
+        "1DMljlhLSzr656-vQeUgBlRMeZLc3HejpHq0gWy7Mts8";
 
-  subdistrictName: r.c[10]?.v || "",
-  subdistrictCode: r.c[11]?.v || "",
+      const modelVillageSheet =
+        "1Ica9n20oQmcUHRaLDTbosQnfn3WQNZoqKt8D6hqR8Y0";
 
-  villageName: r.c[12]?.v || "",
-  villageCode: r.c[13]?.v || "",
+      const [nashaRows, modelVillageRows] =
+        await Promise.all([
+          fetchSheetData(nashaSheet),
+          fetchSheetData(modelVillageSheet)
+        ]);
 
-  venue: r.c[14]?.v || "",
-  description: r.c[15]?.v || "",
+      const parseRows = (rows, source) =>
+        rows.map(r => ({
 
-  photos: r.c[16]?.v || "",
-  videos: r.c[17]?.v || "",
+          source,
 
-  createdAt: r.c[18]?.v || ""
+          name: r.c[0]?.v || "",
+          mobile: r.c[1]?.v?.toString() || "",
 
-}));
+          attendance: r.c[2]?.v || "",
+          program: r.c[3]?.v || "",
 
-        // 🔥 FILTER BY LOGGED-IN USER
-        const filtered = data.filter(
-          item => item.mobile === user.mobile
-        );
+          programStartDate: r.c[4]?.v || "",
+          programEndDate: r.c[5]?.v || "",
 
-        setSubmissions(filtered);
+          hoursPerDay: r.c[6]?.v || "",
+          totalHours: r.c[7]?.v || "",
 
-      });
+          districtName: r.c[10]?.v || "",
+          villageName: r.c[14]?.v || "",
 
-  }, [user.mobile]);
+          description: r.c[16]?.v || "",
+          photos: r.c[17]?.v || "",
+          videos: r.c[18]?.v || "",
+
+          createdAt: r.c[19]?.v || ""
+
+        }));
+
+      const allData = [
+
+        ...parseRows(
+          nashaRows,
+          "Nasha Mukt Bharat"
+        ),
+
+        ...parseRows(
+          modelVillageRows,
+          "Model Village Project"
+        )
+
+      ];
+
+      console.log("USER MOBILE:", user.mobile);
+
+console.log("ALL DATA:", allData);
+
+      const filtered = allData.filter(
+        item => item.mobile === user.mobile
+      );
+
+      filtered.sort(
+        (a, b) =>
+          new Date(b.createdAt) -
+          new Date(a.createdAt)
+      );
+
+      setSubmissions(filtered);
+
+    } catch (err) {
+
+      console.error(err);
+
+    }
+
+  };
+
+  loadData();
+
+}, [user.mobile]);
 
   return (
 
@@ -80,20 +124,29 @@ export default function MySubmissions() {
        <table className="submissionTable">
 
   <thead>
+<tr>
 
-    <tr>
-      <th>Date</th>
-      <th>Program</th>
-      <th>District</th>
-      <th>Village</th>
-      <th>Attendance</th>
-      <th>Venue</th>
-      <th>Description</th>
-      <th>Photos</th>
-      <th>Videos</th>
-    </tr>
+<th>Project</th>
+<th>Program</th>
 
-  </thead>
+<th>Start Date</th>
+<th>End Date</th>
+
+<th>Hours/Day</th>
+<th>Total Hours</th>
+
+<th>District</th>
+<th>Village</th>
+
+<th>Attendance</th>
+
+<th>Description</th>
+
+<th>Photos</th>
+<th>Videos</th>
+
+</tr>
+</thead>
 
   <tbody>
 
@@ -101,77 +154,75 @@ export default function MySubmissions() {
 
       <tr key={index}>
 
-        <td>{item.date}</td>
+<td>{item.source}</td>
 
-        <td>{item.program}</td>
+<td>{item.program}</td>
 
-        <td>{item.districtName}</td>
+<td>{item.programStartDate}</td>
 
-        <td>{item.villageName}</td>
+<td>{item.programEndDate}</td>
 
-        <td>{item.attendance}</td>
+<td>{item.hoursPerDay}</td>
 
-        <td>{item.venue}</td>
+<td>{item.totalHours}</td>
 
-        <td>{item.description}</td>
+<td>{item.districtName}</td>
 
-        {/* PHOTOS */}
-        <td>
+<td>{item.villageName}</td>
 
-        {item.photos
-  .split(",")
-  .map((link, i) => {
+<td>{item.attendance}</td>
 
-    const cleanLink = link
-      .replace(/Photo\s\d+:\s*/i, "")
-      .trim();
+<td>{item.description}</td>
 
-    return (
+<td>
 
-      <div key={i}>
-        <a
-          href={cleanLink}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Photo {i + 1}
-        </a>
-      </div>
+{item.photos &&
+ item.photos.split(",").map((link, i) => {
 
-    );
-  })}
+  const cleanLink = link.trim();
 
-        </td>
+  if (!cleanLink) return null;
 
-        {/* VIDEOS */}
-        <td>
+  return (
+    <div key={i}>
+      <a
+        href={cleanLink}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Photo {i + 1}
+      </a>
+    </div>
+  );
+ })}
 
-         {item.videos
-  .split(",")
-  .map((link, i) => {
+</td>
 
-    const cleanLink = link
-      .replace(/Video\s\d+:\s*/i, "")
-      .trim();
+<td>
 
-    return (
+{item.videos &&
+ item.videos.split(",").map((link, i) => {
 
-      <div key={i}>
-        <a
-          href={cleanLink}
-          target="_blank"
-          rel="noreferrer"
-        >
-          Video {i + 1}
-        </a>
-      </div>
+  const cleanLink = link.trim();
 
-    );
-  })}
+  if (!cleanLink) return null;
 
-        </td>
+  return (
+    <div key={i}>
+      <a
+        href={cleanLink}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Video {i + 1}
+      </a>
+    </div>
+  );
+ })}
 
-      </tr>
+</td>
+
+</tr>
 
     ))}
 

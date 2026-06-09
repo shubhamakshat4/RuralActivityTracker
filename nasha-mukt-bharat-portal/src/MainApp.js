@@ -155,6 +155,42 @@ const calculateTotalHours = () => {
 
 const totalHours = calculateTotalHours();
 
+const programDefaults = {
+  seminar: { days: 1, hours: 3 },
+  rally: { days: 1, hours: 3 },
+  nukkad: { days: 1, hours: 3 },
+  satsang: { days: 1, hours: 2 },
+  competition: { days: 1, hours: 3 },
+  counselling: { days: 1, hours: 3 },
+  navChetnaShivir: { days: 4, hours: 2 },
+  balChetnaShivir: { days: 4, hours: 2 }
+};
+
+const autoPopulateDates = (program, startDate) => {
+
+  if (!program || !startDate) return;
+
+  const config = programDefaults[program];
+
+  if (!config) return;
+
+  const start = new Date(startDate);
+
+  const end = new Date(start);
+
+  end.setDate(start.getDate() + config.days - 1);
+
+  const formattedEnd =
+    end.toISOString().split("T")[0];
+
+  setForm(prev => ({
+    ...prev,
+    endDate: formattedEnd,
+    hoursPerDay: config.hours
+  }));
+
+};
+
 
 
 /* DISTRICT */
@@ -522,7 +558,18 @@ readOnly
 
 <select
 value={form.program || ""}
-onChange={e=>update("program",e.target.value)}
+onChange={e => {
+
+  const selectedProgram = e.target.value;
+
+  update("program", selectedProgram);
+
+  autoPopulateDates(
+    selectedProgram,
+    form.startDate
+  );
+
+}}
 className={form.program ? "hasValue" : ""}
 >
 
@@ -575,7 +622,19 @@ onChange={e=>update("attendance",e.target.value)}
 type="date"
 placeholder=" "
 required
-onChange={e=>update("startDate",e.target.value)}
+value={form.startDate || ""}
+onChange={e => {
+
+  const selectedDate = e.target.value;
+
+  update("startDate", selectedDate);
+
+  autoPopulateDates(
+    form.program,
+    selectedDate
+  );
+
+}}
 />
 
 <label>{t.startDate} *</label>
@@ -588,6 +647,7 @@ onChange={e=>update("startDate",e.target.value)}
 type="date"
 placeholder=" "
 required
+value={form.endDate || ""}
 onChange={e=>update("endDate",e.target.value)}
 />
 
@@ -602,6 +662,7 @@ type="number"
 min="1"
 placeholder=" "
 required
+value={form.hoursPerDay || ""}
 onChange={e=>update("hoursPerDay",e.target.value)}
 />
 
