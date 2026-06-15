@@ -74,7 +74,7 @@ export default function AdminPanel(){
           }
         >
           <img src="/dashboard.png" />
-          <p>View Dashboard</p>
+          <p>View Dashboard - Nasha Mukt Bharat Project</p>
         </div>
 
         {/* SUBMISSIONS */}
@@ -88,7 +88,34 @@ export default function AdminPanel(){
           }
         >
           <img src="/sheet.png" />
-          <p>Total Submissions</p>
+          <p>Total Submissions - Nasha Mukt Bharat Project</p>
+        </div>
+
+        <div
+          className="projectCard"
+          onClick={()=>
+            window.open(
+              "https://datastudio.google.com/u/0/reporting/15c9b565-fc03-438a-845f-cc2a3d2bc6bf",
+              "_blank"
+            )
+          }
+        >
+          <img src="/dashboard.png" />
+          <p>View Dashboard - Model Village Project</p>
+        </div>
+
+        {/* SUBMISSIONS */}
+        <div
+          className="projectCard"
+          onClick={()=>
+            window.open(
+              "https://docs.google.com/spreadsheets/d/1Ica9n20oQmcUHRaLDTbosQnfn3WQNZoqKt8D6hqR8Y0/",
+              "_blank"
+            )
+          }
+        >
+          <img src="/sheet.png" />
+          <p>Total Submissions - Model Village Project</p>
         </div>
 
       </div>
