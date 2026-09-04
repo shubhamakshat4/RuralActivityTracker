@@ -8,6 +8,8 @@ import AdminPanel from "./AdminPanel";
 import AddUser from "./AddUser";
 import ModelVillageApp from "./ModelVillageApp";
 import ManageUsers from "./ManageUsers";
+import SSUActivitiesApp from "./SSUActivitiesApp";
+import GeographicalMap from "./GeographicalMap";
 
 export default function App() {
   return (
@@ -43,6 +45,16 @@ export default function App() {
 <Route
  path="/model-village"
  element={<ModelVillageApp />}
+/>
+
+<Route
+ path="/ssu-activities"
+ element={<SSUActivitiesApp />}
+/>
+
+<Route
+ path="/geographical-mapping"
+ element={<GeographicalMap />}
 />
       </Routes>
     </BrowserRouter>

@@ -74,7 +74,7 @@ const data = rows.map(r => ({
 
       {/* TITLE */}
       <h1 className="loginTitle">
-        Rural Activity Tracker
+        Social Outreach - Sri Sri University
       </h1>
 
       <p className="loginSubtitle">

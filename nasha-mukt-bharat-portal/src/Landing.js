@@ -16,7 +16,7 @@ export default function Landing() {
 
       <img src="/ssu-logo.png" className="logo" />
 
-      <h1>Rural Activity Tracker</h1>
+      <h1>Social Outreach - Sri Sri University</h1>
       <p className="subtitle">powered by Sri Sri University</p>
 
       <h3>Welcome {user.name} ji</h3>
@@ -37,10 +37,21 @@ export default function Landing() {
     className="projectCard"
     onClick={() => navigate("/model-village")}
   >
-    <img src="/model_village.png" />
+    <img src="/model_village.png" alt="Model Village Project" />
     <p>Model Village Project</p>
   </div>
 )}
+
+        {/* SSU Activities */}
+        {user.allowedForms.includes("ssuactivities") && (
+          <div
+            className="projectCard"
+            onClick={() => navigate("/ssu-activities")}
+          >
+            <img src="/ssu-logo.png" alt="Sri Sri University Activities" />
+            <p>Sri Sri University Activities</p>
+          </div>
+        )}
 
         {/* My submissions */}
         <div className="projectCard" onClick={() => navigate("/my-submissions")}>

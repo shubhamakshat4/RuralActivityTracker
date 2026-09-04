@@ -33,14 +33,18 @@ export default function MySubmissions() {
       const modelVillageSheet =
         "1Ica9n20oQmcUHRaLDTbosQnfn3WQNZoqKt8D6hqR8Y0";
 
-      const [nashaRows, modelVillageRows] =
+      const ssuActivitiesSheet =
+        "1RgY8hXTIg6-f0pRoCOSzT4uOyfPmfkA9REmLJEXHAAI";
+
+      const [nashaRows, modelVillageRows, ssuRows] =
         await Promise.all([
           fetchSheetData(nashaSheet),
-          fetchSheetData(modelVillageSheet)
+          fetchSheetData(modelVillageSheet),
+          fetchSheetData(ssuActivitiesSheet)
         ]);
 
       const parseRows = (rows, source) =>
-        rows.map(r => ({
+        (rows || []).map(r => ({
 
           source,
 
@@ -77,6 +81,11 @@ export default function MySubmissions() {
         ...parseRows(
           modelVillageRows,
           "Model Village Project"
+        ),
+
+        ...parseRows(
+          ssuRows,
+          "Sri Sri University Activities"
         )
 
       ];

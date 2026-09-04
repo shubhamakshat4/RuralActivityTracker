@@ -234,6 +234,40 @@ const [formAllowed,setFormAllowed] =
 
       </label>
 
+      <label>
+
+        <input
+          type="checkbox"
+          checked={formAllowed.includes(
+            "ssuactivities"
+          )}
+          onChange={(e)=>{
+
+            if(e.target.checked){
+
+              setFormAllowed([
+                ...formAllowed,
+                "ssuactivities"
+              ]);
+
+            }else{
+
+              setFormAllowed(
+                formAllowed.filter(
+                  x => x !==
+                  "ssuactivities"
+                )
+              );
+
+            }
+
+          }}
+        />
+
+        Sri Sri University Activities Module
+
+      </label>
+
     </div>
 
   )}

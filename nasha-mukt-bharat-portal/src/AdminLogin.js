@@ -40,7 +40,7 @@ export default function AdminLogin(){
         </h1>
 
         <p className="loginSubtitle">
-          Rural Activity Tracker
+          Social Outreach - Sri Sri University
         </p>
 
         <input
